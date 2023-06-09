@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { useRefreshMutation } from "./authApiSlice";
 import { useSelector } from "react-redux";
 import { selectCurrentToken } from "./authSlice";
-import PulseLoader from "react-spinners/PulseLoader";
 
 const PersistLogin = () => {
   const persist = true;
@@ -40,11 +39,7 @@ const PersistLogin = () => {
   }, []);
 
   let content;
-  if (!persist) {
-    // persist: no
-    console.log("no persist");
-    content = <Outlet />;
-  } else if (isLoading) {
+  if (isLoading) {
     //persist: yes, token: no
     console.log("loading");
     content = <p>Loading...</p>;
@@ -54,7 +49,7 @@ const PersistLogin = () => {
     content = <Outlet />;
   } else if (isSuccess && trueSuccess) {
     //persist: yes, token: yes
-    console.log("success");
+    console.log("Te encuentras logeado");
     content = <Outlet />;
   } else if (token && isUninitialized) {
     //persist: yes, token: yes

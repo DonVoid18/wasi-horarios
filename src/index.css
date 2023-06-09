@@ -1,3 +1,24 @@
 @tailwind base;
+@layer base {
+  html {
+    @apply text-[12px];
+  }
+  @screen sm {
+    html {
+      @apply text-[16px];
+    }
+  }
+}
 @tailwind components;
+@layer components {
+  .btn {
+    @apply rounded-default py-3 px-4 font-bold text-lg duration-200 ease-out hover:opacity-70 focus:outline-none focus:ring-4 focus:ring-focus;
+  }
+  .btn-modal {
+    @apply btn py-2;
+  }
+  .input {
+    @apply w-full border bg-input-light rounded-default py-2.5 px-4 text-base tracking-wider duration-200 ease-out focus:outline-none focus:ring-2 focus:ring-focusColor;
+  }
+}
 @tailwind utilities;

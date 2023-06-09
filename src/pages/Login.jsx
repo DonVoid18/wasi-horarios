@@ -1,87 +1,157 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../features/auth/authSlice";
 import { useLoginMutation } from "../features/auth/authApiSlice";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import Logo from "/logo.svg";
+import BannerPerson from "../assets/bannerPerson.jpg";
+import { useState } from "react";
 const Login = () => {
-  const [login, { isLoading, isError, isSuccess, error }] = useLoginMutation();
+  const [login, { isLoading, isError, error }] = useLoginMutation();
+  const [viewPassword, setViewPassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    login({ username, password })
+  const onSubmit = (data) => {
+    login({ username: data.user, password: data.password })
       .unwrap()
       .then((result) => {
         const { accessToken } = result;
         dispatch(setCredentials({ accessToken }));
-        navigate("/");
+        navigate("/", { replace: true });
       });
+    reset();
   };
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
-  if (isError) {
-    console.log(error);
-    return <div>¡Hubo un error al iniciar sesión!</div>;
-  }
+  if (isLoading) return <div>Loading...</div>;
 
-  if (isSuccess) {
-    return <div>Logged in successfully!</div>;
-  }
+  if (isError) return <div>¡Hubo un error al iniciar sesión!</div>;
+
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        onSubmit={handleSubmit}
-      >
-        <h2 className="text-2xl font-bold mb-4">Login</h2>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 font-bold mb-2"
-            htmlFor="username"
-          >
-            Username
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            type="text"
-            placeholder="Enter your username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+    <div className="flex h-screen w-full items-center justify-center">
+      <div className="grid h-full w-full xl:grid-cols-2">
+        <div className="flex h-full w-full flex-col justify-between p-5">
+          <div className="flex w-full items-center justify-center">
+            <div className="w-full flex justify-start items-center">
+              <Link to="/login" className="flex select-none items-center gap-3">
+                <img className="w-14" src={Logo} alt="Logo page" />
+                <h1 className="text-2xl font-bold sm:text-3xl">UNILIX</h1>
+              </Link>
+            </div>
+          </div>
+          <div className="flex w-full justify-center">
+            <div className="flex w-full max-w-sm flex-col gap-8">
+              <div>
+                <h2 className="text-center text-4xl font-bold xl:text-left">
+                  ¡Bienvenido!
+                </h2>
+              </div>
+              <div>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="flex flex-col gap-4">
+                    <div className="relative">
+                      <label
+                        htmlFor="user"
+                        className="flex justify-between items-center text-base font-semibold"
+                      >
+                        <span>Usuario</span>
+                        {errors.user && (
+                          <span className="text-xs text-error">
+                            {errors.user?.message}
+                          </span>
+                        )}
+                      </label>
+                      <div className="relative mt-1">
+                        <input
+                          id="user"
+                          {...register("user", {
+                            required: "Este campo es requerido",
+                            minLength: {
+                              value: 5,
+                              message: "Como minimo 5 caracteres",
+                            },
+                          })}
+                          placeholder="Ingresa tu usuario"
+                          className="input"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="passw"
+                        className="text-base font-semibold flex justify-between items-center"
+                      >
+                        <span>Contraseña</span>
+                        {errors.password && (
+                          <span className="text-xs text-error">
+                            {errors.password?.message}
+                          </span>
+                        )}
+                      </label>
+                      <div className="relative mt-1">
+                        <input
+                          id="password"
+                          {...register("password", {
+                            required: "Este campo es requerido",
+                            minLength: {
+                              value: 5,
+                              message: "Mínimo 5 caracteres",
+                            },
+                          })}
+                          placeholder="Ingresa tu contraseña"
+                          type={viewPassword ? "text" : "password"}
+                          className="input"
+                        />
+                        <div
+                          onClick={() => setViewPassword(!viewPassword)}
+                          className="absolute inset-y-0 right-2.5 flex items-center"
+                        >
+                          {viewPassword ? (
+                            <FontAwesomeIcon
+                              icon={faEye}
+                              className="cursor-pointer"
+                            />
+                          ) : (
+                            <FontAwesomeIcon
+                              icon={faEyeSlash}
+                              className="cursor-pointer"
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-3">
+                      <button type="submit" className="btn w-full bg-primary">
+                        Iniciar sesión
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div className="text-center text-base text-colorTextSecundary">
+            Copyright © 2023 UNILIX todos los derechos reservados.
+          </div>
+        </div>
+        <div className="hidden h-full w-full xl:block">
+          <img
+            className="h-full w-full object-cover"
+            src={BannerPerson}
+            alt="Imagen Login"
           />
         </div>
-
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 font-bold mb-2"
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="password"
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="flex items-center justify-between">
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
-          >
-            Ingresar
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };

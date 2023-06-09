@@ -1,9 +1,8 @@
-import FormBoard from "../components/FormBoard";
+import BoardList from "../components/BoardList";
 const Home = () => {
   return (
-    <div>
-      Home
-      <FormBoard />
+    <div className="w-full p-10">
+      <BoardList />
     </div>
   );
 };
