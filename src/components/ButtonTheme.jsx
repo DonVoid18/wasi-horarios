@@ -42,7 +42,7 @@ const ContainerButtons = () => {
   }, [themeValue]);
 
   return (
-    <div className="flex flex-col border w-32 rounded-lg bg-white shadow-xl overflow-hidden">
+    <div className="flex flex-col border w-32 rounded-lg bg-white shadow-xl overflow-hidden dark:bg-fondo-dark">
       <Button name="light" icon={light} selectButton={themeValue === "light"} />
       <Button name="dark" icon={dark} selectButton={themeValue === "dark"} />
       <Button

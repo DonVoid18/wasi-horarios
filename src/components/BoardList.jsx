@@ -93,7 +93,7 @@ const BoardList = () => {
         </form>
       </Modal>
       <div>
-        <h2 className="text-2xl font-bold flex gap-3 items-center">
+        <h2 className="text-2xl font-bold flex gap-3 items-center dark:text-white">
           <FontAwesomeIcon icon={faBorderAll} />
           <span>MIS TABLEROS</span>
           {isLoading && (
