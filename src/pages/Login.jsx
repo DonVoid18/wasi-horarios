@@ -52,7 +52,8 @@ const Login = () => {
             <div className="flex w-full max-w-sm flex-col gap-8">
               <div>
                 <h2 className="text-center text-4xl font-bold xl:text-left">
-                  ¡Bienvenido!
+                  ¡Bienvenido! <br />
+                  <span className="text-emerald-500">Modo prueba</span>
                 </h2>
               </div>
               <div>
