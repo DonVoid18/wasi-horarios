@@ -138,6 +138,11 @@ const Login = () => {
                         Iniciar sesión
                       </button>
                     </div>
+                    <div className="flex flex-col">
+                      <strong>Credenciales</strong>
+                      <span>usuario: Admin</span>
+                      <span>contraseña: admin123</span>
+                    </div>
                   </div>
                 </form>
               </div>
