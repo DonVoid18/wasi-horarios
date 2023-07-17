@@ -140,7 +140,7 @@ const Login = () => {
                     </div>
                     <div className="flex flex-col">
                       <strong>Credenciales</strong>
-                      <span>usuario: Admin</span>
+                      <span>usuario: admin</span>
                       <span>contraseña: admin123</span>
                     </div>
                   </div>
