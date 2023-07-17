@@ -15,14 +15,14 @@ const App = () => {
 
       {/* ROUTES PROTECTED */}
 
-      {/* <Route element={<PersistLogin />}> */}
-      {/* <Route element={<RequireAuth allowedRoles={["Admin", "User"]} />}> */}
-      <Route path="/" element={<LayoutMain />}>
-        <Route index element={<Home />} />
-        <Route path="boards/:id/courses" element={<TableCourses />} />
+      <Route element={<PersistLogin />}>
+        <Route element={<RequireAuth allowedRoles={["Admin", "User"]} />}>
+          <Route path="/" element={<LayoutMain />}>
+            <Route index element={<Home />} />
+            <Route path="boards/:id/courses" element={<TableCourses />} />
+          </Route>
+        </Route>
       </Route>
-      {/* </Route> */}
-      {/* </Route> */}
       <Route path="*" element={<div>404</div>} />
     </Routes>
   );
