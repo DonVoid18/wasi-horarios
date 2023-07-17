@@ -5,8 +5,10 @@ import { faUser, faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import ButtonTheme from "./ButtonTheme";
 import { faSun, faMoon, faDesktop } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const Header = () => {
+  const [buttonTheme, setButtonTheme] = useState(false);
   const themeIcon = () => {
     const valueTheme = useSelector((state) => state.theme.theme);
     if (valueTheme === "light") return faSun;
@@ -22,19 +24,21 @@ const Header = () => {
           <h1 className="text-2xl font-bold dark:text-white">UNILIX</h1>
         </Link>
       </div>
-      <div className="grid grid-cols-[repeat(3,_35px)] text-center dark:text-white">
-        <div>
+      <div className="grid grid-cols-[repeat(2,_35px)] text-center dark:text-white">
+        {/* <div>
           <button>
             <FontAwesomeIcon icon={faUser} />
           </button>
-        </div>
+        </div> */}
         <div className="relative">
-          <button>
+          <button onClick={() => setButtonTheme(!buttonTheme)}>
             <FontAwesomeIcon icon={themeIcon()} />
           </button>
-          <div className="absolute top-8 right-0">
-            <ButtonTheme />
-          </div>
+          {buttonTheme && (
+            <div className="absolute top-8 right-0">
+              <ButtonTheme />
+            </div>
+          )}
         </div>
         <div>
           <button>

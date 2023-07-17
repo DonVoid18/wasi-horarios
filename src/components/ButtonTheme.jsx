@@ -58,9 +58,11 @@ const Button = ({ name, icon, selectButton }) => {
   const dispatch = useDispatch();
   return (
     <button
-      className={`flex items-center gap-3 px-3 py-2 font-medium capitalize duration-200 ease-out focus:outline-none ${
-        selectButton ? "text-red-600 bg-slate-300" : undefined
-      } hover:bg-slate-300`}
+      className={`flex items-center gap-3 px-3 py-2 capitalize font-medium duration-200 ease-out focus:outline-none ${
+        selectButton
+          ? "text-black bg-gray-200 dark:bg-gray-500 dark:text-white"
+          : undefined
+      } hover:bg-gray-200 hover:dark:bg-gray-500`}
       onClick={() => dispatch(changeTheme(name))}
     >
       {icon}
