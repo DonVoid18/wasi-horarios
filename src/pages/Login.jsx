@@ -53,7 +53,9 @@ const Login = () => {
               <div>
                 <h2 className="text-center text-4xl font-bold xl:text-left">
                   ¡Bienvenido! <br />
-                  <span className="text-emerald-500">Modo prueba</span>
+                  <span className="text-violet-800">
+                    Prototipo Incuval Ventures
+                  </span>
                 </h2>
               </div>
               <div>
@@ -135,6 +137,11 @@ const Login = () => {
                       <button type="submit" className="btn w-full bg-primary">
                         Iniciar sesión
                       </button>
+                    </div>
+                    <div className="flex flex-col">
+                      <strong>Credenciales</strong>
+                      <span>usuario: admin</span>
+                      <span>contraseña: admin123</span>
                     </div>
                   </div>
                 </form>

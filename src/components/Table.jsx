@@ -250,7 +250,7 @@ const Table = () => {
             <div>
               <FontAwesomeIcon icon={faTable} />
             </div>
-            <div className="font-bold rounded-md">CICLO 20</div>
+            <div className="font-bold rounded-md dark:text-white">CICLO 20</div>
             {isLoadNewCourse && (
               <span>
                 <Spinner />
