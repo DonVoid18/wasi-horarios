@@ -5,13 +5,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#ffbd00",
+        primary: "#2f49ca",
+        secondary: "#111427",
+        secondary_2: "#c12564",
         focus: "#0095ff80",
         fondo: {
           light: "#ffffff",
           dark: "#212529",
         },
-        focusColor: "#ffbd00",
+        focusColor: "#0095ff80",
         input: {
           light: "#F8F9FA",
           dark: "#212529",

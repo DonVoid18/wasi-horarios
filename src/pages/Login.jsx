@@ -44,17 +44,17 @@ const Login = () => {
             <div className="w-full flex justify-start items-center">
               <Link to="/login" className="flex select-none items-center gap-3">
                 <img className="w-14" src={Logo} alt="Logo page" />
-                <h1 className="text-2xl font-bold sm:text-3xl">UNILIX</h1>
+                <h1 className="text-2xl font-bold sm:text-3xl">wasi</h1>
               </Link>
             </div>
           </div>
           <div className="flex w-full justify-center">
             <div className="flex w-full max-w-sm flex-col gap-8">
               <div>
-                <h2 className="text-center text-4xl font-bold xl:text-left">
+                <h2 className="text-center text-4xl font-bold">
                   ¡Bienvenido! <br />
-                  <span className="text-violet-800">
-                    Prototipo Incuval Ventures
+                  <span className="bg-gradient-to-r from-rose-600 to-blue-700 bg-clip-text text-transparent">
+                    YACHAYWASI
                   </span>
                 </h2>
               </div>
@@ -134,7 +134,10 @@ const Login = () => {
                       </div>
                     </div>
                     <div className="mt-3">
-                      <button type="submit" className="btn w-full bg-primary">
+                      <button
+                        type="submit"
+                        className="btn w-full bg-secondary_2 text-white"
+                      >
                         Iniciar sesión
                       </button>
                     </div>
@@ -149,12 +152,12 @@ const Login = () => {
             </div>
           </div>
           <div className="text-center text-base text-colorTextSecundary">
-            Copyright © 2023 UNILIX todos los derechos reservados.
+            Copyright © 2023 WASI todos los derechos reservados.
           </div>
         </div>
         <div className="hidden h-full w-full xl:block">
           <img
-            className="h-full w-full object-cover"
+            className="h-screen w-full object-cover"
             src={BannerPerson}
             alt="Imagen Login"
           />

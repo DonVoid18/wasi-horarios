@@ -21,7 +21,7 @@ const Header = () => {
       <div className="w-full flex justify-start items-center">
         <Link to="/" className="flex select-none items-center gap-3">
           <img className="w-9" src={Logo} alt="Logo page" />
-          <h1 className="text-2xl font-bold dark:text-white">UNILIX</h1>
+          <h1 className="text-2xl font-bold dark:text-white">WASI</h1>
         </Link>
       </div>
       <div className="grid grid-cols-[repeat(2,_35px)] text-center dark:text-white">
