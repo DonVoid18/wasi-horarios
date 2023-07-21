@@ -4,7 +4,7 @@ import { setCredentials } from "../../features/auth/authSlice";
 const baseQuery = fetchBaseQuery({
   // develop
   // baseUrl: "http://localhost:3000",
-  baseUrl: "https://api-WASI.onrender.com",
+  baseUrl: "https://api-unilix.onrender.com",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
